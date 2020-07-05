@@ -275,33 +275,20 @@ if __name__ == '__main__':
                     start = v["start"]
                     stop = v["stop"]
 
-                    if direction == Position.top:
-                        index = 0
-                        while start < stop:
+                    index = 0
+                    while start < stop:
+                        if direction == Position.top:
                             pixel = image.getpixel((start, 0))
-                            mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
-                            start += 1
-                            index += 1
-                    if direction == Position.left:
-                        index = 0
-                        while start < stop:
+                        elif direction == Position.left:
                             pixel = image.getpixel((0, start))
-                            mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
-                            start += 1
-                            index += 1
-                    if direction == Position.right:
-                        index = 0
-                        while start < stop:
-                            pixel = image.getpixel((width-1, start))
-                            mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
-                            start += 1
-                            index += 1
-                    if direction == Position.bottom:
-                        index = 0
-                        while start < stop:
+                        elif direction == Position.right:
+                            pixel = image.getpixel((width - 1, start))
+                        elif direction == Position.bottom:
                             pixel = image.getpixel((start, height-1))
-                            mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
-                            start += 1
-                            index += 1
+
+                        mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
+                        start += 1
+                        index += 1
+                        
                     mote.show()
         clear_mote()
