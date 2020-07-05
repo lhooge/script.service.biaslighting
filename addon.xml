@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.service.biaslightmote" name="Bias lighting for Pimoroni Mote" version="0.1.0" provider-name="snafu">
+    <requires>
+        <import addon="xbmc.python" version="2.26.0"/>
+        <import addon="script.module.pyserial"/>
+        <import addon="script.module.pil"/>
+    </requires>
+    <extension point="xbmc.service" library="addon.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Bias lighting for your Kodi media center using Pimoroni Mote lights</summary>
+        <description lang="en_GB">
+Bias lighting for your Kodi media center using Pimoroni Mote lights.
+Picture credit:
+   Stephan Legachev (https://commons.wikimedia.org/wiki/File:Ambilight-2.jpg), „Ambilight-2“, https://creativecommons.org/licenses/by/3.0/legalcode
+        </description>
+        <platform>all</platform>
+        <license>MIT</license>
+        <website>https://hoogi.eu</website>
+        <email>inbox-kodi@hoogi.eu</email>
+        <source>https://git.hoogi.eu/snafu/script.service.biaslightmote</source>
+        <news>v0.1.0
+            - initial release</news>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>

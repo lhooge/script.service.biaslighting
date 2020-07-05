@@ -1,0 +1,162 @@
+# Kodi Media Center language file
+# Addon Name: Pimote
+# Addon id: script.service.pimote
+# Addon Provider: snafu
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Kodi Translation Team\n"
+"Language-Team: English (http://www.transifex.com/projects/p/xbmc-addons/language/en/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#30000"
+msgid "Mote general"
+msgstr ""
+
+
+msgctxt "#30201"
+msgid "Activate Mote 1 Channel"
+msgstr ""
+
+msgctxt "#30202"
+msgid "Activate Mote 2 Channel"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Activate Mote 3 Channel"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Activate Mote 4 Channel"
+msgstr ""
+
+msgctxt "#30210"
+msgid "Position"
+msgstr ""
+
+msgctxt "#30211"
+msgid "Top Left"
+msgstr ""
+
+msgctxt "#30212"
+msgid "Top Middle"
+msgstr ""
+
+msgctxt "#30213"
+msgid "Top Right"
+msgstr ""
+
+msgctxt "#30214"
+msgid "Side Left Top"
+msgstr ""
+
+msgctxt "#30215"
+msgid "Side Left Middle"
+msgstr ""
+
+msgctxt "#30216"
+msgid "Side Left Bottom"
+msgstr ""
+
+msgctxt "#30217"
+msgid "Side Right Top"
+msgstr ""
+
+msgctxt "#30218"
+msgid "Side Right Middle"
+msgstr ""
+
+msgctxt "#30219"
+msgid "Side Right Bottom"
+msgstr ""
+
+msgctxt "#30220"
+msgid "Bottom Left"
+msgstr ""
+
+msgctxt "#30221"
+msgid "Bottom Middle"
+msgstr ""
+
+msgctxt "#30222"
+msgid "Bottom Right"
+msgstr ""
+
+msgctxt "#30230"
+msgid "Invert"
+msgstr ""
+
+msgctxt "#30900"
+msgid "Clear Mote"
+msgstr ""
+
+msgctxt "#31000"
+msgid "Mote colors"
+msgstr ""
+
+msgctxt "#31100"
+msgid "Mode"
+msgstr ""
+
+msgctxt "#31101"
+msgid "Static color"
+msgstr ""
+
+msgctxt "#31102"
+msgid "Bias lighting"
+msgstr ""
+
+msgctxt "#31110"
+msgid "Color (static or when capture is not available)"
+msgstr ""
+
+msgctxt "#31111"
+msgid "Red"
+msgstr ""
+
+msgctxt "#31112"
+msgid "Green"
+msgstr ""
+
+msgctxt "#31113"
+msgid "Blue"
+msgstr ""
+
+msgctxt "#31114"
+msgid "Yellow"
+msgstr ""
+
+msgctxt "#31115"
+msgid "White"
+msgstr ""
+
+msgctxt "#31116"
+msgid "Custom"
+msgstr ""
+
+msgctxt "#31117"
+msgid "None"
+msgstr ""
+
+msgctxt "#31121"
+msgid "Red"
+msgstr ""
+
+msgctxt "#31122"
+msgid "Green"
+msgstr ""
+
+msgctxt "#31123"
+msgid "Blue"
+msgstr ""
+
+msgctxt "#31130"
+msgid "Brightness"
+msgstr ""

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="30000">
+        <setting label="30201" type="bool" id="mote1" default="false"/>
+            <setting id="mote1_position" type="select" label="30201" lvalues="30211|30212|30213|30214|30215|30216|30217|30218|30219|30220|30221|30222" subsetting="true" enable="eq(-1,true)" default="0" />
+            <setting label="30230" type="bool" id="mote1_invert" default="false" enable="eq(-2,true)" subsetting="true" />
+        <setting label="30202" type="bool" id="mote2" default="false"/>
+            <setting id="mote2_position" type="select" label="30201" lvalues="30211|30212|30213|30214|30215|30216|30217|30218|30219|30220|30221|30222" subsetting="true" enable="eq(-1,true)" default="2" />
+            <setting label="30230" type="bool" id="mote2_invert" default="false" enable="eq(-2,true)" subsetting="true" />
+        <setting label="30203" type="bool" id="mote3" default="false"/>
+            <setting id="mote3_position" type="select" label="30201" lvalues="30211|30212|30213|30214|30215|30216|30217|30218|30219|30220|30221|30222" subsetting="true" enable="eq(-1,true)" default="5" />
+            <setting label="30230" type="bool" id="mote3_invert" default="false" enable="eq(-2,true)" subsetting="true" />
+        <setting label="30204" type="bool" id="mote4" default="false"/>
+            <setting id="mote4_position" type="select" label="30201" lvalues="30211|30212|30213|30214|30215|30216|30217|30218|30219|30220|30221|30222" subsetting="true" enable="eq(-1,true)" default="8" />
+            <setting label="30230" type="bool" id="mote4_invert" default="false" enable="eq(-2,true)" subsetting="true"/>
+        <setting label="30900" type="action" action="RunScript(script.service.pimote, clear_mote)"/>
+    </category>
+    <category label="31000">
+        <setting label="31100" type="select" id="mode" lvalues="31101|31102" default="0"/>
+            <setting label="31110" type="select" id="color" lvalues="31117|31111|31112|31113|31114|31115|31116" default="0" subsetting="true" />
+            <setting label="31121" type="slider" id="color_custom_red"  range="0,255" option="int" default="0" subsetting="true"  visible="eq(-1,6)" enable="eq(-1,6)" />
+            <setting label="31122" type="slider" id="color_custom_green"  range="0,255" option="int" default="0" subsetting="true" visible="eq(-2,6)" enable="eq(-2,6)" />
+            <setting label="31123" type="slider" id="color_custom_blue"  range="0,255" option="int" default="0" subsetting="true" visible="eq(-3,6)" enable="eq(-3,6)" />
+        <setting label="31130" type="slider" id="brightness" default="100" range="0,100" option="int" />
+    </category>
+</settings>
