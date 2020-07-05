@@ -278,14 +278,14 @@ if __name__ == '__main__':
                     if direction == Position.top:
                         index = 0
                         while start < stop:
-                            pixel = image.getpixel((0, start))
+                            pixel = image.getpixel((start, 0))
                             mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
                             start += 1
                             index += 1
                     if direction == Position.left:
                         index = 0
                         while start < stop:
-                            pixel = image.getpixel((start, 0))
+                            pixel = image.getpixel((0, start))
                             mote.set_pixel(channel, abs(index-inv_index), pixel[0], pixel[1], pixel[2], brightness)
                             start += 1
                             index += 1

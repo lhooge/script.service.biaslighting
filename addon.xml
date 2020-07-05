@@ -18,8 +18,11 @@ Picture credit:
         <website>https://hoogi.eu</website>
         <email>inbox-kodi@hoogi.eu</email>
         <source>https://git.hoogi.eu/snafu/script.service.biaslightmote</source>
-        <news>v0.1.0
-            - initial release</news>
+        <news>
+v0.1.1
+- fix for position top and left
+v0.1.0
+- initial release</news>
         <assets>
             <icon>resources/icon.png</icon>
             <fanart>resources/fanart.jpg</fanart>
