@@ -114,7 +114,7 @@ msgid "Bias lighting"
 msgstr ""
 
 msgctxt "#31110"
-msgid "Color (static or when capture is not available)"
+msgid "Color (static color when no video is playing)"
 msgstr ""
 
 msgctxt "#31111"

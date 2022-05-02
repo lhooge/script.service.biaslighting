@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.service.biaslightmote" name="Bias lighting for Pimoroni Mote" version="0.1.0" provider-name="snafu">
     <requires>
-        <import addon="xbmc.python" version="2.26.0"/>
+        <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.pyserial"/>
         <import addon="script.module.pil"/>
     </requires>
@@ -19,6 +19,8 @@ Picture credit:
         <email>inbox-kodi@hoogi.eu</email>
         <source>https://git.hoogi.eu/snafu/script.service.biaslightmote</source>
         <news>
+v0.2.0
+- support for Kodi Matrix
 v0.1.1
 - fix for position top and left
 v0.1.0
