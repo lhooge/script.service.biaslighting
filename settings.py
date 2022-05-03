@@ -1,6 +1,7 @@
 from enum import Enum
-import xbmc
 import xbmcaddon
+import xbmc
+from resources.lib.mote import Mote
 
 
 class Direction(Enum):
@@ -8,6 +9,7 @@ class Direction(Enum):
     LEFT = 2
     RIGHT = 3
     BOTTOM = 4
+
 
 class Position(Enum):
     TOP_LEFT = (0, Direction.TOP, 0, 16)
@@ -46,8 +48,19 @@ class Color:
         self.blue = blue
 
 
+def set_mote_position(channel, mote_pos):
+    pos = None
+
+    for name, member in Position.__members__.items():
+        if member.position == mote_pos:
+            pos = member
+
+    channel.update({"direction": pos.direction, "start": pos.start, "stop": pos.end})
+
+
 class Settings:
-    def __init__(self):
+    def __init__(self, mote):
+        self._mote = mote
         self.colors = []
         self.colors.append(Color(0, 0, 0))
         self.colors.append(Color(255, 0, 0))
@@ -88,21 +101,21 @@ class Settings:
         return self._brightness
 
     def readSettings(self):
-        self._mote1 = settings.getSetting("mote1")
+        self._mote1 = settings.getSetting("mote1") == 'true'
         self._mote1_pos = int(settings.getSetting("mote1_position"))
-        self._mote1_inv = settings.getSetting("mote1_invert")
+        self._mote1_inv = settings.getSetting("mote1_invert") == 'true'
 
-        self._mote2 = settings.getSetting("mote2")
+        self._mote2 = settings.getSetting("mote2") == 'true'
         self._mote2_pos = int(settings.getSetting("mote2_position"))
-        self._mote2_inv = settings.getSetting("mote2_invert")
+        self._mote2_inv = settings.getSetting("mote2_invert") == 'true'
 
-        self._mote3 = settings.getSetting("mote3")
+        self._mote3 = settings.getSetting("mote3") == 'true'
         self._mote3_pos = int(settings.getSetting("mote3_position"))
-        self._mote3_inv = settings.getSetting("mote3_invert")
+        self._mote3_inv = settings.getSetting("mote3_invert") == 'true'
 
-        self._mote4 = settings.getSetting("mote4")
+        self._mote4 = settings.getSetting("mote4") == 'true'
         self._mote4_pos = int(settings.getSetting("mote4_position"))
-        self._mote4_inv = settings.getSetting("mote4_invert")
+        self._mote4_inv = settings.getSetting("mote4_invert") == 'true'
 
         self._mode = int(settings.getSetting("mode"))
         _color = int(settings.getSetting("color"))
@@ -121,31 +134,34 @@ class Settings:
         self.set_motes_channels()
 
     def set_motes_channels(self):
-        if self._mote1 == "true":
+        if self._mote1:
             self._channels.update({1: {"invert": self._mote1_inv}})
             channel1 = self._channels.get(1)
-            self.set_mote_position(channel1, self._mote1_pos)
+            set_mote_position(channel1, self._mote1_pos)
+        else:
+            self._channels.pop(1, None)
+            self._mote.clear(1)
 
-        if self._mote2 == "true":
+        if self._mote2:
             self._channels.update({2: {"invert": self._mote2_inv}})
             channel2 = self._channels.get(2)
-            self.set_mote_position(channel2, self._mote2_pos)
+            set_mote_position(channel2, self._mote2_pos)
+        else:
+            self._channels.pop(2, None)
+            self._mote.clear(2)
 
-        if self._mote3 == "true":
+        if self._mote3:
             self._channels.update({3: {"invert": self._mote3_inv}})
             channel3 = self._channels.get(3)
-            self.set_mote_position(channel3, self._mote3_pos)
+            set_mote_position(channel3, self._mote3_pos)
+        else:
+            self._channels.pop(3, None)
+            self._mote.clear(3)
 
-        if self._mote4 == "true":
+        if self._mote4:
             self._channels.update({4: {"invert": self._mote4_inv}})
             channel4 = self._channels.get(4)
-            self.set_mote_position(channel4, self._mote4_pos)
-
-    def set_mote_position(self, channel, mote_pos):
-        pos = None
-
-        for name, member in Position.__members__.items():
-            if member.position == mote_pos:
-                pos = member
-
-        channel.update({"direction": pos.direction, "start": pos.start, "stop": pos.end})
+            set_mote_position(channel4, self._mote4_pos)
+        else:
+            self._channels.pop(4, None)
+            self._mote.clear(4)

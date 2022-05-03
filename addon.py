@@ -12,8 +12,6 @@ WIDTH, HEIGHT = 32, 32
 
 mote = Mote()
 
-mote.clear()
-
 mote.configure_channel(1, NUM_PIXEL, True)
 mote.configure_channel(2, NUM_PIXEL, True)
 mote.configure_channel(3, NUM_PIXEL, True)
@@ -36,32 +34,27 @@ class BiasLightingMonitor(xbmc.Monitor):
 
     def __init__(self):
         super(BiasLightingMonitor, self).__init__()
-        self.settings = Settings()
+        self.settings = Settings(mote=mote)
 
     def onSettingsChanged(self):
-        xbmc.log(msg="ao", level=xbmc.LOGINFO)
         self.settings.readSettings()
-        clear_mote()
-
-    def onAbortRequested(self):
         clear_mote()
 
     def main(self):
         channels = self.settings.get_channels()
+        while not self.abortRequested():
+            if self.waitForAbort(0.6):
+                break
 
-        if self.settings.get_mode() == 0:
-            if self.settings.get_color() == 0:
-                clear_mote()
-            for c in channels.items():
-                for pixel in range(NUM_PIXEL):
-                    set_static_color(channels, pixel, self.settings.get_color(), self.settings.get_brightness())
-            mote.show()
+            if self.settings.get_mode() == 0:
+                if self.settings.get_color() == 0:
+                    clear_mote()
+                for c in channels.items():
+                    for pixel in range(NUM_PIXEL):
+                        set_static_color(channels, pixel, self.settings.get_color(), self.settings.get_brightness())
+                mote.show()
 
-        elif self.settings.get_mode() == 1:
-            while not self.abortRequested():
-                if self.waitForAbort(0.6):
-                    break
-
+            elif self.settings.get_mode() == 1:
                 capture = xbmc.RenderCapture()
                 capture.capture(WIDTH, HEIGHT)
                 pixels = capture.getImage(1000)
@@ -80,8 +73,10 @@ class BiasLightingMonitor(xbmc.Monitor):
                         channel = k
 
                         invert = v["invert"]
+
                         inv_index = 0
-                        if invert == "true":
+
+                        if invert:
                             inv_index = 15
 
                         direction = v["direction"]
@@ -92,9 +87,9 @@ class BiasLightingMonitor(xbmc.Monitor):
                         while start < stop:
                             if direction == Direction.TOP:
                                 pixel = image.getpixel((start, 0))
-                            elif direction == Direction.LEFT:
-                                pixel = image.getpixel((0, start))
                             elif direction == Direction.RIGHT:
+                                pixel = image.getpixel((0, start))
+                            elif direction == Direction.LEFT:
                                 pixel = image.getpixel((WIDTH - 1, start))
                             elif direction == Direction.BOTTOM:
                                 pixel = image.getpixel((start, HEIGHT - 1))
@@ -102,7 +97,8 @@ class BiasLightingMonitor(xbmc.Monitor):
                             mote.set_pixel(channel, abs(index - inv_index), pixel[0], pixel[1], pixel[2], self.settings.get_brightness())
                             start += 1
                             index += 1
-                    mote.show()
+            mote.show()
+        clear_mote()
 
 
 if __name__ == '__main__':
