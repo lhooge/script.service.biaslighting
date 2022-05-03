@@ -5,7 +5,7 @@ try:
     import serial
     import serial.tools.list_ports
 except ImportError:
-    print("This library requires the serial module\nInstall with: sudo pip install pyserial")
+    exit("This library requires the serial module\nInstall with: sudo pip install pyserial")
 
 __version__ = '0.0.4'
 
@@ -16,10 +16,14 @@ NAME = 'Mote USB Dock'
 MAX_PIXELS = 512
 MAX_PIXELS_PER_CHANNEL = int(MAX_PIXELS / 4)
 
+
 class Mote:
     """Represents a connected Mote device, communicating over USB serial.
+
     The Mote class allows you to configure the 4 channels and set individual pixels.
+
     It will attach to the first available Mote device unless `port_name` is specified at init.
+
     :param port_name: Override auto-detect and specify an explicit port to use. Must be a complete path ie: /dev/tty.usbmodem1234 (default None)
     """
 
@@ -42,9 +46,11 @@ class Mote:
 
     def _find_serial_port(self, vid, pid, name):
         """Find a serial port by VID, PID and text name
+
         :param vid: USB vendor ID to locate
         :param pid: USB product ID to locate
         :param name: USB device name to find where VID/PID match fails
+
         """
 
         check_for = "USB VID:PID={vid:04x}:{pid:04x}".format(vid=vid, pid=pid).upper()
@@ -63,9 +69,11 @@ class Mote:
 
     def configure_channel(self, channel, num_pixels, gamma_correction=False):
         """Configure a channel
+
         :param channel: Channel, either 1, 2, 3 or 4 corresponding to numbers on Mote
         :param num_pixels: Number of pixels to configure for this channel
         :param gamma_correction: Whether to enable gamma correction (default False)
+
         """
 
         if channel > self._channel_count or channel < 1:
@@ -87,7 +95,9 @@ class Mote:
 
     def get_pixel_count(self, channel):
         """Get the number of pixels a channel is configured to use
+
         :param channel: Channel, either 1, 2 3 or 4 corresponding to numbers on Mote
+
         """
 
         if channel > self._channel_count or channel < 1:
@@ -99,8 +109,10 @@ class Mote:
 
     def get_pixel(self, channel, index):
         """Get the RGB colour of a single pixel, on a single channel
+
         :param channel: Channel, either 1, 2, 3 or 4 corresponding to numbers on Mote
         :param index: Index of pixel to set, from 0 up
+
         """
 
         if channel > self._channel_count or channel < 1:
@@ -116,21 +128,25 @@ class Mote:
 
     def set_white_point(self, r, g, b):
         """Set the white point.
+
         :param r: Red amount, from 0.0 to 1.0
         :param g: Green amount, from 0.0 to 1.0
         :param b: Blue amount, from 0.0 to 1.0
+
         """
 
         self.white_point = (r, g, b)
 
     def set_pixel(self, channel, index, r, g, b, brightness=None):
         """Set the RGB colour of a single pixel, on a single channel
+
         :param channel: Channel, either 1, 2, 3 or 4 corresponding to numbers on Mote
         :param index: Index of pixel to set, from 0 up
         :param r: Amount of red: 0-255
         :param g: Amount of green: 0-255
         :param b: Amount of blue: 0-255
         :param brightness: (Optional) brightness of pixel from 0.0 to 1.0. Will scale R,G,B accordingly.
+
         """
 
         if channel > self._channel_count or channel < 1:
@@ -149,7 +165,9 @@ class Mote:
 
     def clear(self, channel=None):
         """Clear the buffer of a specific or all channels
+
         :param channel: If set, clear a specific channel, otherwise all (default None)
+
         """
 
         if channel is None:
@@ -186,12 +204,15 @@ class Mote:
 
     def set_all(self, r, g, b, brightness=None, channel=None):
         """Set the RGB value and optionally brightness of all pixels
+
         If you don't supply a brightness value, the last value set for each pixel be kept.
+
         :param r: Amount of red: 0 to 255
         :param g: Amount of green: 0 to 255
         :param b: Amount of blue: 0 to 255
         :param brightness: Brightness: 0.0 to 1.0 (default around 0.2)
         :param channel: Optional channel: 1, 2, 3 or 4 (default to all)
+
         """
 
         if channel in range(1, self._channel_count + 1):
@@ -207,8 +228,10 @@ class Mote:
 
     def set_brightness(self, brightness):
         """Set the brightness of all pixels
+
         This sets the brightness of each pixel individually, it can be overriden
         by supplying the brightness argument to set_pixel.
+
         :param brightness: Brightness: 0.0 to 1.0
 
         """
@@ -224,8 +247,11 @@ class Mote:
 
     def set_clear_on_exit(self, value=True):
         """Set whether Mote should be cleared upon exit.
+
         By default Mote will leave the pixels on upon exit, but calling::
+
             mote.set_clear_on_exit()
+
         Will ensure that they are cleared.
 
         """
