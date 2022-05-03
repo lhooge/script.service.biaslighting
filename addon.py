@@ -49,11 +49,8 @@ class BiasLightingMonitor(xbmc.Monitor):
             if self.settings.get_mode() == 0:
                 if self.settings.get_color() == 0:
                     clear_mote()
-                for c in channels.items():
-                    for pixel in range(NUM_PIXEL):
-                        set_static_color(channels, pixel, self.settings.get_color(), self.settings.get_brightness())
-                mote.show()
-
+                for pixel in range(NUM_PIXEL):
+                    set_static_color(channels, pixel, self.settings.get_color(), self.settings.get_brightness())
             elif self.settings.get_mode() == 1:
                 capture = xbmc.RenderCapture()
                 capture.capture(WIDTH, HEIGHT)
