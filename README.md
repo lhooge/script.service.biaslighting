@@ -8,7 +8,7 @@ Bias lighting for your Kodi media center using Pimoroni Mote lights.
 
 * Pimoroni Mote ([https://shop.pimoroni.com/products/mote)](https://shop.pimoroni.com/products/mote)
 * Tape
-* Kodi Leia 19.x version supported
+* Kodi Matrix 19.x version supported
 
 There is no repository available. Just copy the zip to some folder
 accessible by the user running kodi and choose to install from zip file. 
