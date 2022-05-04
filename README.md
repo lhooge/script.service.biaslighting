@@ -8,10 +8,11 @@ Bias lighting for your Kodi media center using Pimoroni Mote lights.
 
 * Pimoroni Mote ([https://shop.pimoroni.com/products/mote)](https://shop.pimoroni.com/products/mote)
 * Tape
-* Kodi Leia 18.x version supported
+* Kodi Leia 19.x version supported
 
-I'm just starting with some Kodi and Python development, there is no repository available. Just copy the zip to some folder
-accessible by the user running kodi and choose to install from zip file. You have to enable unknown sources (Settings -> System -> Addons)  
+There is no repository available. Just copy the zip to some folder
+accessible by the user running kodi and choose to install from zip file. 
+You have to enable unknown sources first (Settings -> System -> Addons)  
 
 The service will run in the background.
 
@@ -54,14 +55,6 @@ BOTTOM |        |                                                               
 Inverting the output is also supported, you don't have to pay attention to correct direction.
 
 For setting up the correct positions download the test_color.mp4 video and play/pause it in Kodi while configuring your Mote.
-
-You must deactivate / activate add-on to apply settings.
-
-
-## Todos
-
- * If capture is switching colors fast the lightning is noisy
- * Something like a color picker for custom colors?
 
 ## Bugs, patches and feedback always welcome. 
 
